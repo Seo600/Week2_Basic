@@ -16,12 +16,14 @@ public class AnimationController : MonoBehaviour
 
     public void PlayAnimation()
     {
-        SetValue(animationVariable);
+        if (animationVariable < 2)
+        {
+            animationVariable++;
+        }
+        else
+        {
+            animationVariable = 0;
+        }
         animator.SetInteger("isInt", animationVariable);
-    }
-
-    public void SetValue(int value)
-    {
-        
     }
 }
