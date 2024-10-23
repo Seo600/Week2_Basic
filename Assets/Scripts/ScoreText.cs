@@ -8,10 +8,11 @@ using UnityEngine.UI;
 public class ScoreText : MonoBehaviour
 {
     public ScoreButton scoreButton;
-    public TextMeshProUGUI scoreText;
+    private TextMeshProUGUI scoreText;
     private void Awake()
     {
-        scoreButton.scoreButton.onClick.AddListener(RefreshUI);
+        scoreButton.scoreButton.onClick.AddListener(() => RefreshUI(1));
+        scoreButton.OnScoreChanged += RefreshUI;
     }
 
     void Start()
@@ -20,8 +21,8 @@ public class ScoreText : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void RefreshUI()
+    public void RefreshUI(int newScore)
     {
-        scoreText.text = scoreButton.score.ToString();
+        scoreText.text = newScore.ToString();
     }
 }

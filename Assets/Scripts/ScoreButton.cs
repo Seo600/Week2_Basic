@@ -8,6 +8,7 @@ public class ScoreButton : MonoBehaviour
 {
 	public Button scoreButton;
 	public int score;
+	public Action<int> OnScoreChanged;
 
 	private void Awake()
 	{
@@ -18,5 +19,6 @@ public class ScoreButton : MonoBehaviour
 	public void PointUp()
 	{
 		score += 1;
+		OnScoreChanged?.Invoke(score);
 	}
 }
